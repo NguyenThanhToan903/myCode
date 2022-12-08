@@ -3,7 +3,7 @@
 
 #define EEPROM_SIZE 8
 
-const char* ssid = "Nóichung";
+const char* ssid = "Relative";
 const char* password = "1234123412";
 
 WiFiServer server(80);
