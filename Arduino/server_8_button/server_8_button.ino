@@ -218,7 +218,7 @@ void loop(){
               if (output13State == 0 ) {
                 maychu.println("\n<div class=\"box grey\"><p>GPIO 13 - State off</p>\n<p><a href=\"/13/on\"><button class=\"button\">ON</button></a></p></div>");
               } else {
-                maychu.println("\n<div class=\"box grey\"><p>GPIO 13 - State oN</p>\n<p><a href=\"/13/off\"><button class=\"button off\">OFF</button></a></p></div>");
+                maychu.println("\n<div class=\"box grey\"><p>GPIO 13 - State on</p>\n<p><a href=\"/13/off\"><button class=\"button off\">OFF</button></a></p></div>");
               } 
 
               maychu.println("\n        </div>\n</div>\n</body>\n</html>");
