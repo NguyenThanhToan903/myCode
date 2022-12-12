@@ -14,9 +14,9 @@
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 
-// Replace with your network credentials
-const char* ssid = "REPLACE_WITH_YOUR_SSID";
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+// Replace with your network credentials  
+const char* ssid = "4Cs Coffee";
+const char* password = "4csxinchao";
 
 const int output = 2;
 
@@ -125,4 +125,3 @@ void setup(){
 void loop() {
   
 }
-1
