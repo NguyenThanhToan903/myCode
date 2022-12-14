@@ -6,14 +6,13 @@
 }
 
 html{
-    height: 10000px;
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-block;
+    text-align: center;
 }
 
-#one{
-    /* position: relative; */
-    background-image: url('./image/Han.jpg') ;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    /* asd */
+body{
+    min-width: 400px;
+    margin: 0 auto;
+    padding-bottom: 25px;
 }

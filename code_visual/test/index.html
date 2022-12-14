@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/image/Han.jpg">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <div id="one">
-        <!-- 
-            <img src="/assets/image/Han.jpg" alt=""> -->
-            <div>
-                hello world
-            </div>
-        </div>
+    <div>
+        <h2>ESP32 PWM</h2>
+        <p><span id="textSliderValue">%SLIDERVALUE%</span></p>
+        <p><input type="range" onchange="updateSliderPWM(this)" id="pwmSlider" min="0" max="255" value="%SLIDERVALUE%" step="1" class="slider"></p>
+    </div> 
+    <script>
+        function updateSliderPWM(element){
+            var sliderValue = document.getElementById("pwmSlider").value;
+            document.getElementById("textSliderValue").innerHTML = sliderValue;
+            console.log(sliderValue);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET","/slider?value="+sliderValue, true);
+            xhr.send()
+        }
+    </script>       
 </body>
+
 </html>
