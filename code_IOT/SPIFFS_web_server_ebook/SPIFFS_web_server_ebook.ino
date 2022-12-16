@@ -59,7 +59,7 @@ void setup(){
 
   server.on("/off", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(ledPin, LOW);
-    request->send(SPIFFS, "index.html", String(), false, processor);
+    request->send(SPIFFS, "/index.html", String(), false, processor);
   });
 
   server.begin();
