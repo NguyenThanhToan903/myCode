@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
+#content h2{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.div{
+    display: block;
+}
+.grey{
+    background-color: #b6b6b6;
+}
+
+.grey-light{
+    background-color: rgb(237 237 237);
+}
+
+.red{
+    background-color: rgb(156, 20, 20);
+}
+
+.green {
+    background-color: rgb(75, 196, 156);
+}
+
+.text-white{
+    color: #fff;
+}
+
+.radius{
+    border-radius: 13px;
+}
+
+.box{
+
+    margin: 16px 4px 0 4px;
+    padding: 24px 0px;
+}
+
+.col-half{
+    width: 50%;
+}
+
+.col-half h2{
+    font-size: 36px;
+}
+
+.margin-8{
+    margin: 8px;
+}
+
+.margin-10{
+    margin: 10px;
+}
+
+.row{
+    display: flex;
+}
+
+.nd{
+    margin: 10px 200px;
+    font-size: 25px;
+    text-align: center;
+
+}
+
+.nd .duty-btn{
+    display: block;
+    margin: 10px auto;
+    font-size: 32px;
+}
+
+.nd p{
+    display: inline-block;
+}
+
+
+
+.button{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 45px;
+    text-decoration: none;
+    margin: 14px;
+}
+
+.item{
+    text-align: center;
+    padding: 10px;
+    margin: 8px;
+}
+
+#header h1{
+    color: red;
+    text-align: center;
+    margin: 16px 0;
+}
+
+#header h3{
+    color: blue;
+    text-align: center;
+}
+
+#content .button {
+    display: block;
+}
+
+
+@media (max-width: 1140px) {
+    
+    #header h1{
+        font-size: 24px;
+    }
+
+    .col-half h2{
+        font-size: 20px;
+    }
+    
+    .nd{
+        text-align: center;
+        margin: 10px auto;
+        font-size: 20px;
+    }
+
+    .nd .duty-btn{
+        font-size: 22px;
+
+    }
+
+    .button {
+        font-size: 20px;
+        padding: 36px 0;
+        margin: 12px 8px;
+    }
+    
+}

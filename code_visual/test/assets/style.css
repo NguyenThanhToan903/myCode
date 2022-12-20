@@ -9,10 +9,19 @@ html{
     font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     text-align: center;
+    background-color: rgb(93, 182, 246);
 }
 
 body{
     min-width: 400px;
     margin: 0 auto;
     padding-bottom: 25px;
+}
+
+#textSliderValue {
+    color: rgb(135, 77, 222);
+}
+
+range {
+    color: rgb(41, 104, 158);
 }
