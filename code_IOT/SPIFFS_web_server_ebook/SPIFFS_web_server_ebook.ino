@@ -2,15 +2,15 @@
 #include <SPIFFS.h>
 #include <ESPAsyncWebServer.h>
 
-const char* ssid = "Relative";
-const char* password = "1234123412";
+const char* ssid = "4Cs Coffee";
+const char* password = "4csxinchao";
 
 const int ledPin = 2;
 
 String ledState;
 
 AsyncWebServer server(80);
-dfd
+
 String processor(const String& var){
   Serial.println(var);
   if(var == "STATE"){
@@ -52,10 +52,10 @@ void setup(){
     request->send(SPIFFS, "/style.css", "text/css");
   });
 
-  server.on("/on", HTTP_GET, [](AsyncWebServerRequest *request){
+  server.on("/#", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(ledPin, HIGH);
     request->send(SPIFFS, "/index.html", String(), false, processor);
-  });
+  }); 
 
   server.on("/off", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(ledPin, LOW);

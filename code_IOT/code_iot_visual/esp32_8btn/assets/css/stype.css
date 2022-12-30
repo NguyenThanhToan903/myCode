@@ -8,6 +8,35 @@ html {
     font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
 }
 
+
+.ON{
+    background-color: #f23d79;
+    box-shadow: 0 5px 0 #8c2e6e;
+}
+
+.off{
+    background-color: #b4b4b4;
+    box-shadow: 0 5px 0 #858585;
+}
+
+button{
+    padding: 46px 366px;
+    font-size: 24px;
+    /* padding: 45px; */
+    text-decoration: none;
+    margin: 14px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    transition: .5s;
+}
+
+button:active{
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+
 #content h2{
     text-align: center;
     margin: 10px 0;

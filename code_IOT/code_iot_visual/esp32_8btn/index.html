@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/esp32_8btn/assets/css/stype.css">
+    <link rel="stylesheet" href="/assets/css/stype.css">
     <title>ESP32 SERVER</title>
 </head>
 <body>
@@ -21,13 +21,13 @@
                     <div class="nd">
                         <p class="duty-btn">Nhiệm vụ: </p>
                         <p>Trạng thái:</p>
-                        <p>ON</p>
+                        
                     </div>
                 </div>
                 <div class="col-half radius grey-light margin-10">
-                    <a href="#" class="button red radius text-white">
-                        ON
-                    </a>
+                    <button class="ON">
+                            ON
+                        </button>
                 </div>
             </div>
             <div class="row">
@@ -40,9 +40,7 @@
                     </div>
                 </div>
                 <div class="col-half radius grey-light margin-10">
-                    <a href="#" class="button red radius text-white">
-                        ON
-                    </a>
+                    <input type="checkbox" onchange="toggleCheckbox(this)" id="2" checked > <span></span>
                 </div>
             </div>
             <div class="row">

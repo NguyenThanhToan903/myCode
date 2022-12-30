@@ -1,11 +1,12 @@
 #include<stdio.h>
 
-
 int main(){
-	char c;
-	scanf("%c", &c);
-	if(c>=65 && c<=90){
-		printf("%c", c+32);
-	}
+	void *p;
+	int a=5, b=2, *q;
+	p=&a;
+	q = (int*)p;
+	b=*q;
+	printf("%d", b);
 	return 0;
 }
+
