@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author nttoa
- *
- */
-module test {
-}
