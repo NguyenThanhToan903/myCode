@@ -5,16 +5,80 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 #main{
     
 }
 
 #header{
-    
+    height: 46px;
+    background-color: #000;
 }
 
+#header .search-btn{
+    float: right;
+}
+
+#header .search-btn:hover {
+    background-color: #f33;
+    cursor: pointer;
+}
+
+#header .search-icon {
+    color: #fff;
+    padding: 15px 20px;
+}
+
+#nav {
+    display: inline-block;
+}
+
+#nav, .subnav {
+    list-style-type: none;
+}
+
+#nav > li {
+    display: inline-block;
+}
+
+#nav li { 
+    position: relative;
+}
+
+#nav > li > a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#nav li a {
+    text-decoration: none;
+    line-height: 46px;
+    padding: 0 24px;
+    display: inline-block;
+}
+
+#nav .subnav {
+    display: none;
+    min-width: 160px;
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+#nav .subnav a {
+    color: #000;
+    padding: 0 12px;
+    line-height: 38px;
+}
+
+
 #slider{
-    
+    min-height: 500px;
+    /* background-color: #333; */
 }
 
 #content{
@@ -24,3 +88,18 @@
 #footer{
     
 }
+
+
+/*-----------------hover--------------*/
+
+#nav li:hover .subnav{
+    display: block;
+}
+
+#nav .subnav li:hover,  /* hover tag header and more */
+#nav > li:hover > a {
+    background-color: #ccc;
+    color: #000;
+}
+
+/*-------------end hover-------------*/
