@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/tryw3css_templates_band.htm"> -->
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.2.1/css/all.min.css">
     <title>Document</title>
@@ -12,38 +12,57 @@
 <body>
     <div id="main">
         <div id="header">
-            <ul id="nav">
-                <li><a href="">Home</a></li>
-                <li><a href="">Band</a></li>
-                <li><a href="">Tour</a></li>
-                <li><a href="">Contact</a></li>
-                <li>
-                    <a href="">
+            <div class="header-list ">
+                <a class="header-item" href="">Home</a>
+                <a class="header-item" href="">Band</a>
+                <a class="header-item" href="">Tour</a>
+                <a class="header-item" href="">Contact</a>
+                <div class="dropdown-hover">
+                    <button class="button">
                         More
                         <i class="fa-solid fa-caret-down"></i>
-                    </a>
-                    <ul class="subnav">
-                        <li><a href="">Merchandise</a></li>
-                        <li><a href="">Extras</a></li>
-                        <li><a href="">Media</a></li>
-                    </ul> 
-                </li>
-            </ul>
-            <div class="search-btn">
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+                    </button>
+                    <div class="dropdown-content">
+                            <a href="">Merchandise</a>
+                            <a href="">Extras</a>
+                            <a href="">Media</a>
+                    </div>
+                </div>
+                <div class="search">
+                    <i class="search-icon fa-solid fa-magnifying-glass"></i>
+                </div> 
+            </div>        
         </div>
-
-        <div id="slider">
-
-        </div>
-
         <div id="content">
+            <div id="slider">
+                <img class="slider-img" src="/myShop/assets/img/slider/chicago.jpg" alt="">
+                <div class="text-content">
+                    <h3 class="text-heading">
+                        New York
+                    </h3>
+                    <div class="text-description">
+                        <b>Thank you, Chicago - A night we won't forget.</b>
+                    </div>
+                </div>
+            </div>
 
-        </div>
-            
-        <div id="footer">
+            <div id="container">
+                <div class="content-section">
+                    <h2 class="section-heading">
+                        The Band
+                    </h2>
+                    <p class="opacity">
+                        <i>We love music</i>
+                    </p>
+                    <p class="content-description">
+                        We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                </div>
+            </div>
+                
+            <div id="footer">
 
+            </div>
         </div>
     </div>
     

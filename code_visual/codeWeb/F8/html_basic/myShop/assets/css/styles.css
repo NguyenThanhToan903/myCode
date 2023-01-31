@@ -1,88 +1,164 @@
 /* Reset CSS */
 * {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
 }
 
 html {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+h1, h2, h3{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+button{
+    border: none;
+    font: inherit;
+    background-color: #000;
+}
+
+img{
+    vertical-align: middle;
 }
 
 #main{
     
 }
 
-#header{
+#header {
     height: 46px;
     background-color: #000;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
 }
 
-#header .search-btn{
-    float: right;
-}
 
-#header .search-btn:hover {
-    background-color: #f33;
-    cursor: pointer;
-}
-
-#header .search-icon {
-    color: #fff;
-    padding: 15px 20px;
-}
-
-#nav {
-    display: inline-block;
-}
-
-#nav, .subnav {
-    list-style-type: none;
-}
-
-#nav > li {
-    display: inline-block;
-}
-
-#nav li { 
-    position: relative;
-}
-
-#nav > li > a {
+#header .header-list > a{
     color: #fff;
     text-transform: uppercase;
-}
-
-#nav li a {
     text-decoration: none;
     line-height: 46px;
     padding: 0 24px;
     display: inline-block;
 }
 
-#nav .subnav {
-    display: none;
-    min-width: 160px;
+#header .header-item{
+    float: left;
+}
+
+#header .dropdown-hover{
+    position: static;
+    display: inline-block;
+}
+
+#header .button{
+    text-transform: uppercase;
+    color: #fff ;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+#header .dropdown-content{
     position: absolute;
-    top: 100%;
+    min-width: 160px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    display: none;
+    text-decoration: none;
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%);
 }
 
-#nav .subnav a {
-    color: #000;
-    padding: 0 12px;
-    line-height: 38px;
+#header .dropdown-content a{
+    color: #000 !important;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
 }
 
+#header .search{
+    float: right;
+}
+
+#header .search:hover {
+    background-color: #f33;
+    cursor: pointer;
+}
+
+#header .search-icon {
+    color: white;
+    padding: 15px 20px;
+}
+/*---------------END: header list------------------*/
+
+/*--------------- content ------------------*/
+#content{
+    margin-top: 46px;
+}
 
 #slider{
-    min-height: 500px;
-    /* background-color: #333; */
+    display: block;
+    position: relative;
 }
 
-#content{
-    
+#slider .slider-img{
+    width: 100%;
+}
+
+#slider .text-content{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    padding: 32px 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#slider .text-heading{
+    text-align: center;
+    font-size: 24px;
+}
+
+#slider .text-description{
+    margin: 15px 0;
+    font-size: 15px;
+    text-align: center;
+}
+/* ----------------------------------------------------- */
+/* -----------------------END slider--------------------*/
+#container{
+    height: 10000px;
+}
+
+#container .content-section{
+    min-width: 800px;
+    text-align: center;
+    padding: 64px 16px;
+    display: block;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+#container .section-heading{
+    font-size: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#container .opacity{
+    opacity: 0.6;
+}
+
+#container .content-description{
+    text-align: justify;
 }
 
 #footer{
@@ -92,14 +168,18 @@ html {
 
 /*-----------------hover--------------*/
 
-#nav li:hover .subnav{
-    display: block;
+ /* hover tag header and more */
+.dropdown-hover:hover .button,
+.header-list > a:hover,
+.dropdown-content > a:hover{
+    background-color: #ccc !important;
+    color: #000 !important;
 }
 
-#nav .subnav li:hover,  /* hover tag header and more */
-#nav > li:hover > a {
-    background-color: #ccc;
-    color: #000;
+#header .dropdown-hover:hover .dropdown-content{
+    display: block;
+    text-transform: uppercase;
+    color: #000 !important;
 }
 
 /*-------------end hover-------------*/
