@@ -1,0 +1,7 @@
+.DS_Store
+*.autosave
+*.save
+*~
+*.tmp
+*.part
+*.rsls
