@@ -83,7 +83,7 @@
 
 </head>
 <body>
-    <div class="topnav">
+    <!-- <div class="topnav">
         <h1>ESP WebSocket Server</h1>
     </div>
     <div class="content">
@@ -92,39 +92,43 @@
                 <div class="hf-card">
                     <h2>Output - 1</h2>
                     <p class="state">State: <span id="state1">%STATE%</span></p>
-                    <p><button id="button1" class="button">Công tắc</button></p>
+                    <p><button id="button0" onclick="initButton()" class="button">Công tắc</button></p>
                 </div>
                 <div class="hf-card">
                     <h2>Output - 2</h2>
                     <p class="state">State: <span id="state2">%STATE%</span></p>
-                    <p><button id="button2" class="button">Công tắc</button></p>
+                    <p><button id="button1" onclick="initButton()" class="button">Công tắc</button></p>
                 </div>
             </div>
             <div>
                 <div class="hf-card">
                     <h2>Output - 3</h2>
                     <p class="state">State: <span id="state3">%STATE%</span></p>
-                    <p><button id="button1" class="button">Công tắc</button></p>
+                    <p><button id="button2" onclick="initButton()" class="button">Công tắc</button></p>
                 </div>
                 <div class="hf-card">
                     <h2>Output - 4</h2>
                     <p class="state">State: <span id="state4">%STATE%</span></p>
-                    <p><button id="button2" class="button">Công tắc</button></p>
+                    <p><button id="button3" onclick="initButton()" class="button">Công tắc</button></p>
                 </div>
             </div>
         </div>
         
-    </div>
+    </div> -->
+    <h2>
+        ESP32 Web server
+    </h2>
+    <h4>Relay# 1-GPIO 2</h4><label class="switch"><input type="checkbox" onchange=""></label>
     <script>
-        var gateway = `ws://${window.location.hostname}/ws`;
-        var websocket;
-        function initWebSocket() {
-            console.log('Trying to open websocket connection...');
-            websocket = new WebSocket(gateway);
-            websocket.onopen = onOpen;
-            websocket.onclose = onClose;
-            websocket.onmessage = onMessage;
-        }
+        // var gateway = `ws://${window.location.hostname}/ws`;
+        // var websocket;
+        // function initWebSocket() {
+        //     console.log('Trying to open websocket connection...');
+        //     websocket = new WebSocket(gateway);
+        //     websocket.onopen = onOpen;
+        //     websocket.onclose = onClose;
+        //     websocket.onmessage = onMessage;
+        // }
 
         function onOpen(event) {
             console.log('Connected opened');
@@ -149,10 +153,40 @@
             initButton();
         }
         function initButton() {
-            document.getElementById('button').addEventListener('click', Toggle);
+            document.getElementById('button0').addEventListener('click', Button_change);
+            document.getElementById('button2').addEventListener('click', Button_change);
+            document.getElementById('button3').addEventListener('click', Button_change);
+            document.getElementById('button1').addEventListener('click', Button_change);
         }
-        function Toggle(){
-            websocket.send('toggle');
+        function Button_change(){
+
+            let state0 = 0, state1 = 0, state2 = 0, state3 = 0;
+            let Button_selected = [0,0,0,0];
+            function swap(){
+                let a = 1, b = 0, temp;
+                temp = a;
+                a = b;
+                b = temp;
+                return a;
+            }
+            if(document.getElementById('button0').onclick){
+                Button_selected[0] = swap();
+                console.log("state0"+String(Button_selected[0]));
+            }else if(document.getElementById('button1').onclick){
+                Button_selected[1] = !state1;
+                console.log(Button_selected[1]);
+            }else if(document.getElementById('button2').onclick){
+                Button_selected[2] = !state2;
+                console.log(Button_selected[2]);
+            }else if(document.getElementById('button3').onclick){
+                Button_selected[3] = !state3;
+                console.log(Button_selected[3]);
+            }
+            // websocket.send('Button_selected');
+            console.log(Button_selected);
+            // if(document.getElementById('button0').onclick) 
+
+            document.getElementById('state1').innerHTML = state;
         }
 
     </script>
