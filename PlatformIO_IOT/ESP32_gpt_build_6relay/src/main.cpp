@@ -1,70 +1,121 @@
+#include <WiFi.h>
 #include <ESPAsyncWebServer.h>
-#include <WebSocketsServer.h>
 
-// Khởi tạo đối tượng ESPAsyncWebServer
+// Tên mạng WiFi và mật khẩu
+const char *ssid = "NVUICAFE-ESPORT";
+const char *password = "nvuicafe";
+
+// Trang web
+const char *index_html = R"rawliteral(
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <h1>WebSocket Test</h1>
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="Enter message">
+    <button onclick="sendMessage()">Send</button>
+  </body>
+  <script src="/main.js"></script>
+</html>
+)rawliteral";
+
+const char *style_css = R"rawliteral(
+/* CSS */
+)rawliteral";
+
+const char *main_js = R"rawliteral(
+// JavaScript
+var webSocket;
+
+function initWebSocket() {
+  webSocket = new WebSocket('ws://' + window.location.hostname + ':81/websocket?client_num=0');
+  webSocket.onopen = function(event) {
+    console.log('WebSocket opened:', event);
+  };
+  webSocket.onclose = function(event) {
+    console.log('WebSocket closed:', event);
+  };
+  webSocket.onerror = function(event) {
+    console.log('WebSocket error:', event);
+  };
+  webSocket.onmessage = function(event) {
+    console.log('WebSocket message received:', event);
+    var output = document.getElementById('output');
+    output.innerHTML += '<p>' + event.data + '</p>';
+  };
+}
+
+function sendMessage() {
+  var input = document.getElementById('input');
+  var message = input.value;
+  webSocket.send(message);
+  input.value = '';
+}
+
+initWebSocket();
+)rawliteral";
+
+// Khởi tạo ESPAsyncWebServer
 AsyncWebServer server(80);
 
-// Khai báo biến cho các relay
-int relay1 = 2;
-int relay2 = 3;
-int relay3 = 4;
-int relay4 = 5;
-int relay5 = 6;
-int relay6 = 7;
+// Khởi tạo WebSocket
+AsyncWebSocket ws("/websocket");
 
-// Callback function khi nhận được websocket message
-void onWebSocketEvent(uint8_t client_num, WStype_t type, uint8_t *payload, size_t length)
+// Hàm xử lý kết nối WebSocket
+void onWebSocketEvent(AsyncWebSocket *server, AsyncWebSocketClient *client, AwsEventType type, void *arg, uint8_t *data, size_t len)
 {
-  if (type == WStype_TEXT)
+  if (type == WS_EVT_CONNECT)
   {
-    // Chuyển đổi message nhận được từ string sang số nguyên
-    int value = atoi((char *)payload);
-
-    // Kiểm tra relay nào được điều khiển
-    if (client_num == 0)
-    {
-      digitalWrite(relay1, value);
-    }
-    else if (client_num == 1)
-    {
-      digitalWrite(relay2, value);
-    }
-    else if (client_num == 2)
-    {
-      digitalWrite(relay3, value);
-    }
-    else if (client_num == 3)
-    {
-      digitalWrite(relay4, value);
-    }
-    else if (client_num == 4)
-    {
-      digitalWrite(relay5, value);
-    }
-    else if (client_num == 5)
-    {
-      digitalWrite(relay6, value);
-    }
+    Serial.println("Client connected");
+  }
+  else if (type == WS_EVT_DISCONNECT)
+  {
+    Serial.println("Client disconnected");
+  }
+  else if (type == WS_EVT_DATA)
+  {
+    Serial.printf("Data received: %s\n", data);
+    // Gửi dữ liệu trả về cho client
+    client->text("Server received your message: " + String((char *)data));
   }
 }
 
 void setup()
 {
-  // Khởi tạo các relay
-  pinMode(relay1, OUTPUT);
-  pinMode(relay2, OUTPUT);
-  pinMode(relay3, OUTPUT);
-  pinMode(relay4, OUTPUT);
-  pinMode(relay5, OUTPUT);
-  pinMode(relay6, OUTPUT);
+  // Kết nối WiFi
+  Serial.begin(115200);
+
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(1000);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println(WiFi.localIP());
+
+  Serial.println("WiFi connected");
 
   // Cấu hình đường dẫn và callback cho các trang web
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
-            { request->send(SPIFFS, "/index.html"); });
-  server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request)
-            { request->send(SPIFFS, "/styles.css", "text/css"); });
-  server.on("/script.js", HTTP_GET, [](AsyncWebServerRequest *request)
-            { request->send(SPIFFS, "/script.js", "application/javascript"); });
+            { request->send_P(200, "text/html", index_html); });
+  server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send_P(200, "text/css", style_css); });
+  server.on("/main.js", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send_P(200, "application/javascript", main_js); });
 
-  // Khởi tạo đối tượng WebSocketsServer
-  WebSocketsServer webSocket
+  // Kết nối WebSocket và thiết lập callback
+  ws.onEvent(onWebSocketEvent);
+  server.addHandler(&ws);
+
+  // Khởi động server
+  server.begin();
+}
+
+void loop()
+{
+}
